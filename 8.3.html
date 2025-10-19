@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="2010.css" />
+    <link rel="icon" href="flower.png" type="image/x-icon" />
+    <title>Chuc em tat ca 🌸</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Anonymous+Pro"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- Audio tự động phát -->
+    <audio id="backgroundMusic" autoplay loop>
+      <source src="thich-em-hoi-nhieu.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="greetings">
+      <!-- silahkan menambah kata sesuai keinginan dengan <span>text...</span -->
+
+      <span id="letter">Y</span>
+      <span id="letter">O</span>
+      <span id="letter">U</span>
+      <span id="letter">'</span>
+      <span id="letter">R</span>
+      <span>E</span>
+
+      <span style="margin-right: 20px"></span>
+      <span id="letter">M</span>
+      <span>Y</span>
+
+      <span style="margin-right: 4pt"></span>
+      <br class="mobile-break" />
+
+      <span id="letter">
+        <a
+          href=""
+          id="pp_letter"
+          class="typewrite"
+          data-period="2000"
+          data-type='[ "FLOWER", "SUNSHINE", "LOVE","QUEEN" ,"SWEET","INSPIRATION","JEWEL" ]'
+        >
+          <script>
+            var TxtType = function (el, toRotate, period) {
+              this.toRotate = toRotate;
+              this.el = el;
+              this.loopNum = 0;
+              this.period = parseInt(period, 10) || 2000;
+              this.txt = "";
+              this.tick();
+              this.isDeleting = false;
+            };
+
+            TxtType.prototype.tick = function () {
+              var i = this.loopNum % this.toRotate.length;
+              var fullTxt = this.toRotate[i];
+
+              if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+              } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+              }
+
+              this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
+
+              var that = this;
+              var delta = 200 - Math.random() * 100;
+
+              if (this.isDeleting) {
+                delta /= 2;
+              }
+
+              if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+              } else if (this.isDeleting && this.txt === "") {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+              }
+
+              setTimeout(function () {
+                that.tick();
+              }, delta);
+            };
+
+            window.onload = function () {
+              var elements = document.getElementsByClassName("typewrite");
+              for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute("data-type");
+                var period = elements[i].getAttribute("data-period");
+                if (toRotate) {
+                  new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+              }
+              // INJECT CSS
+              var css = document.createElement("style");
+              css.type = "text/css";
+              css.innerHTML =
+                ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+              document.body.appendChild(css);
+            };
+          </script>
+          <span class="wrap"></span>
+        </a>
+      </span>
+      <!-- <span id="letter">F</span>
+        <span id="letter">L</span>
+        <span id="letter">O</span>
+        <span id="letter">W</span>
+        <span id="letter">E</span>
+        <span id="letter">R</span> -->
+    </div>
+    <div id="typedtext" class="csstext">
+      <script>
+        // set up text to print, each item in array is new line
+        var aText = new Array(
+          "Tính anh không thích lòng vòng",
+          "nên là nhân dịp ngày phụ nữ Việt Nam ",
+          "Eng Mèng Méng chúc con vk Vũ Ngọc Kim Ngân 8386 phát tài phát lộc ",
+          "vui vẻ xink đẹp hạnh phúc bên anh nhé!"
+        );
+        var iSpeed = 100; // time delay of print out
+        var iIndex = 0; // start printing array at this posision
+        var iArrLength = aText[0].length; // the length of the text array
+        var iScrollAt = 20; // start scrolling up at this many lines
+
+        var iTextPos = 0; // initialise text position
+        var sContents = ""; // initialise contents variable
+        var iRow; // initialise current row
+
+        function typewriter() {
+          sContents = " ";
+          iRow = Math.max(0, iIndex - iScrollAt);
+          var destination = document.getElementById("typedtext");
+
+          while (iRow < iIndex) {
+            sContents += aText[iRow++] + "<br>"; // Thêm thẻ <br> để tạo khoảng cách
+          }
+          destination.innerHTML =
+            sContents + aText[iIndex].substring(0, iTextPos) + "_";
+          if (iTextPos++ == iArrLength) {
+            iTextPos = 0;
+            iIndex++;
+            if (iIndex != aText.length) {
+              iArrLength = aText[iIndex].length;
+              setTimeout("typewriter()", 500);
+            }
+          } else {
+            setTimeout("typewriter()", iSpeed);
+          }
+        }
+
+        typewriter();
+      </script>
+    </div>
+    <div class="description">
+      <!-- <p class="line-1 anim-typewriter"></p>
+        <p class="line-1 anim-typewriter"></p>
+        <p class="line-1 anim-typewriter"></p>
+        <p class="line-1 anim-typewriter"></p> -->
+    </div>
+    <div class="button">
+      <div class="flower-text" id="flowerText">hái hoa đi emiu 😽</div>
+      <div class="arrow-container">
+        <span class="arrow">↓</span>
+      </div>
+      <div id="flower" class="rotate"></div>
+      <script src="hoa.js"></script>
+    </div>
+
+    <style>
+      /* Đảm bảo button ở giữa màn hình */
+      .button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Dòng chữ "hái hoa đi" với hiệu ứng đổi màu */
+      .flower-text {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        animation: colorChange 2s infinite;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes colorChange {
+        0% {
+          color: #ff6b6b;
+        }
+        20% {
+          color: #4ecdc4;
+        }
+        40% {
+          color: #ffe66d;
+        }
+        60% {
+          color: #a8e6cf;
+        }
+        80% {
+          color: #ff8ed4;
+        }
+        100% {
+          color: #ff6b6b;
+        }
+      }
+
+      /* Mũi tên chuyển động */
+      .arrow-container {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .arrow {
+        display: inline-block;
+        font-size: 30px;
+        color: #fff;
+        animation: arrowMove 1s infinite ease-in-out;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      @keyframes arrowMove {
+        0%,
+        100% {
+          transform: translateY(-5px);
+        }
+        50% {
+          transform: translateY(5px);
+        }
+      }
+
+      /* Hiệu ứng gradient lấp lánh cho bông hoa */
+      #flower {
+        cursor: pointer;
+        animation: gradientShine 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+      }
+
+      @keyframes gradientShine {
+        0% {
+          filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.8))
+            drop-shadow(0 0 20px rgba(255, 107, 107, 0.4));
+        }
+        25% {
+          filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.8))
+            drop-shadow(0 0 20px rgba(78, 205, 196, 0.4));
+        }
+        50% {
+          filter: drop-shadow(0 0 10px rgba(255, 230, 109, 0.8))
+            drop-shadow(0 0 20px rgba(255, 230, 109, 0.4));
+        }
+        75% {
+          filter: drop-shadow(0 0 10px rgba(168, 230, 207, 0.8))
+            drop-shadow(0 0 20px rgba(168, 230, 207, 0.4));
+        }
+        100% {
+          filter: drop-shadow(0 0 10px rgba(255, 142, 212, 0.8))
+            drop-shadow(0 0 20px rgba(255, 142, 212, 0.4));
+        }
+      }
+
+      /* CSS cho hiệu ứng pháo bông */
+      .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: #f0f;
+        position: absolute;
+        animation: confetti-fall 3s linear forwards;
+      }
+
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    </style>
+
+    <script>
+      // Xử lý autoplay và click vào bông hoa
+      var audio = document.getElementById("backgroundMusic");
+      var musicStarted = false;
+
+      // Thử autoplay khi trang load
+      window.addEventListener("load", function () {
+        audio
+          .play()
+          .then(function () {
+            musicStarted = true;
+            console.log("Music autoplay started");
+          })
+          .catch(function (error) {
+            console.log(
+              "Autoplay prevented. Click on the flower to start music."
+            );
+          });
+      });
+
+      // Hàm tạo hiệu ứng pháo bông
+      function createConfetti(x, y) {
+        const colors = [
+          "#ff6b6b",
+          "#4ecdc4",
+          "#ffe66d",
+          "#a8e6cf",
+          "#ff8ed4",
+          "#95e1d3",
+          "#feca57",
+        ];
+        const confettiCount = 50; // Số lượng mảnh pháo bông
+
+        for (let i = 0; i < confettiCount; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+
+          // Màu ngẫu nhiên
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+
+          // Vị trí bắt đầu từ nơi click
+          confetti.style.left = x + "px";
+          confetti.style.top = y + "px";
+
+          // Kích thước ngẫu nhiên
+          const size = Math.random() * 10 + 5;
+          confetti.style.width = size + "px";
+          confetti.style.height = size + "px";
+
+          // Hướng bay ngẫu nhiên
+          const angle = Math.random() * Math.PI * 2;
+          const velocity = Math.random() * 300 + 100;
+          const vx = Math.cos(angle) * velocity;
+          const vy = Math.sin(angle) * velocity - 200; // Bay lên trước
+
+          confetti.style.setProperty("--vx", vx + "px");
+          confetti.style.setProperty("--vy", vy + "px");
+
+          // Thêm animation tùy chỉnh
+          confetti.style.animation = `confetti-fall ${
+            Math.random() * 2 + 2
+          }s ease-out forwards`;
+          confetti.style.transform = `translate(${vx}px, ${vy}px) rotate(${
+            Math.random() * 360
+          }deg)`;
+
+          document.body.appendChild(confetti);
+
+          // Xóa sau khi animation kết thúc
+          setTimeout(() => {
+            confetti.remove();
+          }, 4000);
+        }
+      }
+
+      // Xử lý click vào bông hoa
+      var flower = document.getElementById("flower");
+      if (flower) {
+        flower.addEventListener("click", function (e) {
+          // Lấy vị trí click
+          const rect = flower.getBoundingClientRect();
+          const x = rect.left + rect.width / 2;
+          const y = rect.top + rect.height / 2;
+
+          // Tạo hiệu ứng pháo bông
+          createConfetti(x, y);
+
+          // Nếu nhạc chưa phát, phát nhạc
+          if (!musicStarted) {
+            audio
+              .play()
+              .then(function () {
+                musicStarted = true;
+                console.log("Music started by clicking flower");
+              })
+              .catch(function (error) {
+                console.log("Failed to play music");
+              });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
